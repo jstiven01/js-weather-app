@@ -1,5 +1,6 @@
+import 'bootstrap';
+import './style.scss';
 import weather from './weather'
-
 
 console.log("Installing the Basic Setup");
 weather.takeLocation('London');
