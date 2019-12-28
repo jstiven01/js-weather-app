@@ -19,8 +19,16 @@ const domHandler = (() => {
     return [inputLocation.value, checkedTUnits];
   };
 
+  const showError = (error) => {
+    const parentElement = document.getElementById('form-weather');
+    const divError = document.createElement('div');
+    divError.setAttribute('class', 'my-3 alert alert-danger');
+    divError.innerHTML = `Location ${error}`;
+    parentElement.appendChild(divError);
+  };
+
   return {
-    creatingWeatherObj, getLocationUnitsDOM,
+    creatingWeatherObj, getLocationUnitsDOM, showError,
   };
 })();
 export default domHandler;

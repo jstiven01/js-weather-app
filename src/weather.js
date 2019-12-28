@@ -8,6 +8,10 @@ const weatherAPI = (() => {
 
   const setUrl = () => `${url}${location}&units=${units}&appid=${API}`;
 
+  const handleErrors = (response) => {
+    if (!response.ok) throw Error(response.statusText);
+  };
+
   const getWeatherLocation = async () => {
     [location, units] = dom.getLocationUnitsDOM();
     console.log(location, units);
@@ -15,10 +19,11 @@ const weatherAPI = (() => {
       try {
         console.log('hey', setUrl());
         const response = await fetch(setUrl(), { mode: 'cors' });
+        handleErrors(response);
         const weatherData = await response.json();
         dom.creatingWeatherObj(weatherData);
       } catch (error) {
-        console.log({ error });
+        dom.showError(error);
       }
     }
   };
