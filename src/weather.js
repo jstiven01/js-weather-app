@@ -1,3 +1,5 @@
+import dom from './dom'
+
 const weatherAPI = (() => {
     let location;
     const url = 'http://api.openweathermap.org/data/2.5/weather?q=';
@@ -10,7 +12,8 @@ const weatherAPI = (() => {
         try {
             const response = await fetch(setUrl(), {mode: 'cors'});
             const weatherData = await response.json();
-            console.log(weatherData, setUrl());
+            dom.creatingWeatherObj(weatherData);
+            
         } catch (error) {
             console.log({error});   
         }
