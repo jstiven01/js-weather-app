@@ -12,13 +12,15 @@ const domHandler = (() => {
     document.getElementById('location').value = '';
   };
 
-  const getLocationDOM = () => {
+  const getLocationUnitsDOM = () => {
     const inputLocation = document.getElementById('location');
-    return inputLocation.value;
+    const radios = document.getElementsByName('units');
+    const checkedTUnits = radios[0].checked ? radios[0].value : radios[1].value;
+    return [inputLocation.value, checkedTUnits];
   };
 
   return {
-    creatingWeatherObj, getLocationDOM,
+    creatingWeatherObj, getLocationUnitsDOM,
   };
 })();
 export default domHandler;
