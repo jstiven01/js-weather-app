@@ -21,7 +21,8 @@ const weatherAPI = (() => {
         const response = await fetch(setUrl(), { mode: 'cors' });
         handleErrors(response);
         const weatherData = await response.json();
-        dom.creatingWeatherObj(weatherData);
+        // dom.creatingWeatherObj(weatherData);
+        dom.showWeather(weatherData);
       } catch (error) {
         dom.showError(error);
       }
