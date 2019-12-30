@@ -32,7 +32,12 @@ module.exports = {
           loader: 'sass-loader' // compiles Sass to CSS
         }]
       },
-      
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+      },
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,

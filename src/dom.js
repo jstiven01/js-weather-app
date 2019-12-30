@@ -49,10 +49,7 @@ const domHandler = (() => {
 
   const showAdditionalInfo = () => {
     const ulAddInfo = document.createElement('ul');
-    const h5Title = document.createElement('h5');
-    h5Title.innerHTML = 'Additional Info.';
-    ulAddInfo.appendChild(h5Title);
-    ulAddInfo.setAttribute('class', 'col-6');
+    ulAddInfo.setAttribute('class', 'col-12 d-flex');
     let unitsInfo;
     for (let i = 1; i < 6; i += 1) {
       const li = document.createElement('li');
@@ -70,34 +67,46 @@ const domHandler = (() => {
     const errorElement = document.querySelector('.alert-danger');
     if (errorElement) errorElement.remove();
     // Name city
+    const divCityDay = document.createElement('div');
     const h2NameCity = document.createElement('h2');
-    h2NameCity.setAttribute('class', 'col-12');
     h2NameCity.innerHTML = nameCity;
-    parentElement.appendChild(h2NameCity);
+    divCityDay.appendChild(h2NameCity);
     // Current Day
     const h4CurrentDay = document.createElement('h4');
-    h4CurrentDay.setAttribute('class', 'col-12');
     h4CurrentDay.innerHTML = getCurrentNameDay();
-    parentElement.appendChild(h4CurrentDay);
+    divCityDay.setAttribute('class', 'col-4 align-self-center text-center');
+    divCityDay.appendChild(h4CurrentDay);
+    parentElement.appendChild(divCityDay);
     // Description weather
     const h4Description = document.createElement('h4');
     h4Description.innerHTML = weatherDescription[0].description;
     // Temperature
-    const h2Temperature = document.createElement('h2');
-    h2Temperature.setAttribute('class', 'col-2 d-flex flex-column align-self-center');
-    h2Temperature.innerHTML = `${temperature.temp}${showUnits(tempUnits)}`;
-    h2Temperature.appendChild(h4Description);
-    parentElement.appendChild(h2Temperature);
+    const divTemperature = document.createElement('div');
+    const h1Temperature = document.createElement('h1');
+    // h1Temperature.setAttribute('class', 'col-2 d-flex flex-column align-self-center');
+    h1Temperature.innerHTML = `${temperature.temp}${showUnits(tempUnits)}`;
+    divTemperature.setAttribute('class', 'col-4 align-self-center text-center');
+    divTemperature.appendChild(h1Temperature);
+    parentElement.appendChild(divTemperature);
+
     // icon weather
+    const divIconDescription = document.createElement('div');
     const iconWeather = document.createElement('img');
-    iconWeather.setAttribute('class', 'col-2');
+    // iconWeather.setAttribute('class', 'col-2');
     iconWeather.alt = 'icon weather';
     iconWeather.src = urlIconWeather();
-    parentElement.appendChild(iconWeather);
-
-
+    divIconDescription.setAttribute('class', 'col-4 text-center');
+    divIconDescription.appendChild(iconWeather);
+    divIconDescription.appendChild(h4Description);
+    parentElement.appendChild(divIconDescription);
     // Additional Info
-    parentElement.appendChild(showAdditionalInfo());
+    const divAddInfo = document.createElement('div');
+    const h6Title = document.createElement('h6');
+    h6Title.setAttribute('class', 'col-12');
+    h6Title.innerHTML = 'Additional Info.';
+    divAddInfo.appendChild(h6Title);
+    divAddInfo.appendChild(showAdditionalInfo());
+    parentElement.appendChild(divAddInfo);
   };
 
   const showError = (error) => {
