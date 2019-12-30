@@ -8,33 +8,34 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <h1 class="col-12 text-center">Weather APP</h1>
-            <div class="col-6 form" id="form-weather">
-                <div class="form-group">
-                  <label for="location">Location</label>
-                  <input type="text" name="" id="location" class="form-control" placeholder="Insert your city" aria-describedby="helpId">
-                  <small id="helpId" class="text-muted">Location to check the weather</small>
-                </div>
-                <div class="form-group">
-                    <div class="form-check-inline">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="units" id="celsius" value="metric" checked>
-                            Celsius
-                        </label>
+        <div class="col-6 mx-auto background-container">
+            <div class="row">
+                <h1 class="col-12 text-center">Weather APP</h1>
+                <div class="col-6 form" id="form-weather">
+                    <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" name="" id="location" class="form-control" placeholder="Insert your city" aria-describedby="helpId">
+                    <small id="helpId" class="text-muted">Location to check the weather</small>
                     </div>
-                    <div class="form-check-inline">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="units" id="fahrenheit" value="imperial">
-                            Fahrenheit
-                        </label>
+                    <div class="form-group">
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="units" id="celsius" value="metric" checked>
+                                Celsius
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="units" id="fahrenheit" value="imperial">
+                                Fahrenheit
+                            </label>
+                        </div>
                     </div>
+                    <button type="submit" class="btn btn-primary" id='submit'>Check the Weather</button>
                 </div>
-                <button type="submit" class="btn btn-primary" id='submit'>Check the Weather</button>
             </div>
-        </div>
-        <div class="row" id="current-weather">
-
+            <div class="row mt-4" id="current-weather">
+            </div>
         </div>
     </div>
     <script src="main.js"></script>
