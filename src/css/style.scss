@@ -17,7 +17,51 @@ li {
   font-weight: bold;
 }
 
-.background-container {
+.background-weather-w0 {
   background-image: url(../img/Initial.jpg);
   background-size: cover;
+}
+
+.background-weather-w2 {
+  background-image: url(../img/thunderstorm.jpg);
+  background-size: cover;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.background-weather-w3 {
+  background-image: url(../img/drizzle.jpg);
+  background-size: cover;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.background-weather-w5 {
+  background-image: url(../img/rain.jpg);
+  background-size: cover;
+  color: #68ff00;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.background-weather-w6 {
+  background-image: url(../img/snow.jpg);
+  background-size: cover;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.background-weather-w7 {
+  background-image: url(../img/atmosphere.jpg);
+  background-size: cover;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.background-weather-w800 {
+  background-image: url(../img/clear.jpg);
+  background-size: cover;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.background-weather-w8 {
+  background-image: url(../img/clouds.jpg);
+  background-size: cover;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }

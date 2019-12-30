@@ -30,6 +30,12 @@ const domHandler = (() => {
     return dayName;
   };
 
+  const setBackgroundWeather = (code = 0) => {
+    const divBackground = document.getElementById('image-container');
+    let classCode = code !== 800 ? `w${code.toString()[0]}`: `w${code.toString()}`;
+    divBackground.setAttribute('class', `col-6 mx-auto background-weather-${classCode}`)
+  };
+
   const urlIconWeather = () => {
     const urlIcon = 'http://openweathermap.org/img/wn/';
     return `${urlIcon}${weatherDescription[0].icon}@2x.png`;
@@ -103,6 +109,8 @@ const domHandler = (() => {
     divAddInfo.appendChild(h6Title);
     divAddInfo.appendChild(showAdditionalInfo());
     parentElement.appendChild(divAddInfo);
+    // setting background
+    setBackgroundWeather(weatherDescription[0].id);
   };
 
   const showError = (error) => {
@@ -116,6 +124,7 @@ const domHandler = (() => {
     } else {
       divError.innerHTML = 'Please Try it later';
     }
+    setBackgroundWeather();
 
     parentElement.appendChild(divError);
   };
