@@ -10,7 +10,6 @@ const domHandler = (() => {
     temperature = main;
     weatherDescription = weather;
     nameCity = name;
-    console.log(weatherDescription, temperature, nameCity, weatherData);
     document.getElementById('location').value = '';
   };
 
@@ -83,16 +82,13 @@ const domHandler = (() => {
     // Temperature
     const divTemperature = document.createElement('div');
     const h1Temperature = document.createElement('h1');
-    // h1Temperature.setAttribute('class', 'col-2 d-flex flex-column align-self-center');
     h1Temperature.innerHTML = `${temperature.temp}${showUnits(tempUnits)}`;
     divTemperature.setAttribute('class', 'col-4 align-self-center text-center');
     divTemperature.appendChild(h1Temperature);
     parentElement.appendChild(divTemperature);
-
     // icon weather
     const divIconDescription = document.createElement('div');
     const iconWeather = document.createElement('img');
-    // iconWeather.setAttribute('class', 'col-2');
     iconWeather.alt = 'icon weather';
     iconWeather.src = urlIconWeather();
     divIconDescription.setAttribute('class', 'col-4 text-center');
@@ -115,7 +111,12 @@ const domHandler = (() => {
     const parentElement = document.getElementById('form-weather');
     const divError = document.createElement('div');
     divError.setAttribute('class', 'my-3 alert alert-danger');
-    divError.innerHTML = `Location ${error}`;
+    if (error.message === '404') {
+      divError.innerHTML = 'Location no found';
+    } else {
+      divError.innerHTML = 'Please Try it later';
+    }
+
     parentElement.appendChild(divError);
   };
 

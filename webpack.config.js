@@ -1,9 +1,11 @@
 const path = require('path');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   mode: 'development',
   entry: {
-    app: ["babel-polyfill", './src/index.js']
+    app: ['babel-polyfill', './src/index.js'],
   },
   output: {
     filename: 'main.js',
@@ -20,17 +22,17 @@ module.exports = {
         }, {
           loader: 'postcss-loader', // Run post css actions
           options: {
-            plugins: function () { // post css plugins, can be exported to postcss.config.js
+            plugins() { // post css plugins, can be exported to postcss.config.js
               return [
-                require('precss'),
-                require('autoprefixer')
+                precss,
+                autoprefixer,
               ];
-            }
-          }
-        }, 
+            },
+          },
+        },
         {
-          loader: 'sass-loader' // compiles Sass to CSS
-        }]
+          loader: 'sass-loader', // compiles Sass to CSS
+        }],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
