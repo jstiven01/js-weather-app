@@ -32,8 +32,8 @@ const domHandler = (() => {
 
   const setBackgroundWeather = (code = 0) => {
     const divBackground = document.getElementById('image-container');
-    let classCode = code !== 800 ? `w${code.toString()[0]}`: `w${code.toString()}`;
-    divBackground.setAttribute('class', `col-6 mx-auto background-weather-${classCode}`)
+    const classCode = code !== 800 ? `w${code.toString()[0]}` : `w${code.toString()}`;
+    divBackground.setAttribute('class', `col-6 mx-auto background-weather-${classCode}`);
   };
 
   const urlIconWeather = () => {
