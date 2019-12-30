@@ -1,3 +1,5 @@
+/* eslint import/no-unresolved: 2 */
+
 const path = require('path');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
