@@ -65,3 +65,35 @@ li {
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+
+.metric-activate {
+  background-color: transparent !important;
+  background-repeat:no-repeat !important;
+  border: none !important;
+  cursor: text !important;
+  overflow: hidden !important;
+  outline: none !important;
+  color:inherit !important;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black !important;
+  font-size: 35px !important;
+}
+
+.imperial-activate {
+  background-color: transparent !important;
+  background-repeat:no-repeat !important;
+  border: none !important;
+  cursor: text !important;
+  overflow: hidden !important;
+  outline: none !important;
+  color: inherit !important;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black !important;
+  font-size: 35px !important;
+}
+
+#degrees{
+  margin: 0;
+}
+
+#image-container {
+  height: 46vh;
+}

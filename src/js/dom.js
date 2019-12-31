@@ -15,7 +15,7 @@ const domHandler = (() => {
 
   const setTempUnits = (units) => { tempUnits = units; };
 
-  const getLocation = () =>  document.getElementById('location').value;
+  const getLocation = () => document.getElementById('location').value;
 
   const getCurrentNameDay = () => {
     const d = new Date();
@@ -48,7 +48,7 @@ const domHandler = (() => {
 
   const showAdditionalInfo = () => {
     const ulAddInfo = document.createElement('ul');
-    ulAddInfo.setAttribute('class', 'col-12 d-flex');
+    ulAddInfo.setAttribute('class', 'col-12 pr-0 d-flex');
     let unitsInfo;
     for (let i = 1; i < 6; i += 1) {
       const li = document.createElement('li');
@@ -65,26 +65,35 @@ const domHandler = (() => {
     const h1Temperature = document.createElement('h1');
     const buttonMetric = document.createElement('button');
     const buttonImperial = document.createElement('button');
-    
     h1Temperature.innerHTML = `${temperature.temp}`;
+    h1Temperature.setAttribute('class', 'align-self-center');
+    h1Temperature.setAttribute('id', 'degrees');
+
     buttonMetric.innerHTML = '°C';
     buttonImperial.innerHTML = '°F';
     buttonMetric.setAttribute('id', 'metric');
     buttonImperial.setAttribute('id', 'imperial');
+    buttonMetric.setAttribute('class', 'align-self-center btn-primary');
+    buttonImperial.setAttribute('class', 'align-self-center btn-primary');
+
+    divTemperature.setAttribute('class', 'col-4 p-0 d-flex justify-content-center');
+    divTemperature.appendChild(h1Temperature);
 
     if (tempUnits === 'metric') {
       buttonMetric.disabled = true;
       buttonImperial.disabled = false;
+      buttonMetric.classList.add('metric-activate');
+      buttonMetric.classList.remove('imperial-activate');
+      divTemperature.appendChild(buttonMetric);
+      divTemperature.appendChild(buttonImperial);
     } else {
       buttonMetric.disabled = false;
       buttonImperial.disabled = true;
+      buttonImperial.classList.add('imperial-activate');
+      buttonMetric.classList.remove('metric-activate');
+      divTemperature.appendChild(buttonImperial);
+      divTemperature.appendChild(buttonMetric);
     }
-
-    divTemperature.setAttribute('class', 'col-4 align-self-center text-center');
-    divTemperature.appendChild(h1Temperature);
-    divTemperature.appendChild(buttonMetric);
-    divTemperature.appendChild(buttonImperial);
-
     return divTemperature;
   };
 
@@ -94,7 +103,6 @@ const domHandler = (() => {
     parentElement.innerHTML = '';
     const errorElement = document.querySelector('.alert-danger');
     if (errorElement) errorElement.remove();
-    
     const divCityDay = document.createElement('div');
     const h2NameCity = document.createElement('h2');
     h2NameCity.innerHTML = nameCity;
@@ -140,7 +148,6 @@ const domHandler = (() => {
     
     currentWeather.innerHTML = '';
     if (errorElement) errorElement.remove();
-
     divError.setAttribute('class', 'my-3 alert alert-danger');
     if (error.message === '404') {
       divError.innerHTML = 'Location no found';
