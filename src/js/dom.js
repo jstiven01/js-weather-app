@@ -13,14 +13,10 @@ const domHandler = (() => {
     document.getElementById('location').value = '';
   };
 
-  const getLocationUnitsDOM = () => {
-    const parentElement = document.getElementById('current-weather');
-    parentElement.innerHTML = '';
-    const inputLocation = document.getElementById('location');
-    const radios = document.getElementsByName('units');
-    const checkedTUnits = radios[0].checked ? radios[0].value : radios[1].value;
-    tempUnits = checkedTUnits;
-    return [inputLocation.value, checkedTUnits];
+  const setTempUnits = (units) => { tempUnits = units };
+
+  const getLocation = () => {
+    return document.getElementById('location').value;
   };
 
   const getCurrentNameDay = () => {
@@ -66,9 +62,39 @@ const domHandler = (() => {
     return ulAddInfo;
   };
 
+  const showMainTemperature = () => {
+    const divTemperature = document.createElement('div');
+    const h1Temperature = document.createElement('h1');
+    const buttonMetric = document.createElement('button');
+    const buttonImperial = document.createElement('button');
+    
+    h1Temperature.innerHTML = `${temperature.temp}`;
+    buttonMetric.innerHTML = '°C';
+    buttonImperial.innerHTML = '°F';
+    buttonMetric.setAttribute('id', 'metric');
+    buttonImperial.setAttribute('id', 'imperial');
+    if (tempUnits === 'metric'){
+      buttonMetric.disabled = true;
+      buttonImperial.disabled = false;
+    } else {
+      buttonMetric.disabled = false;
+      buttonImperial.disabled = true;
+    }
+
+
+    divTemperature.setAttribute('class', 'col-4 align-self-center text-center');
+    divTemperature.appendChild(h1Temperature);
+    divTemperature.appendChild(buttonMetric);
+    divTemperature.appendChild(buttonImperial);
+
+    return divTemperature;
+
+  };
+
   const showWeather = (weatherData) => {
     creatingWeatherObj(weatherData);
     const parentElement = document.getElementById('current-weather');
+    parentElement.innerHTML = '';
     const errorElement = document.querySelector('.alert-danger');
     if (errorElement) errorElement.remove();
     
@@ -86,12 +112,8 @@ const domHandler = (() => {
     const h4Description = document.createElement('h4');
     h4Description.innerHTML = weatherDescription[0].description;
 
-    const divTemperature = document.createElement('div');
-    const h1Temperature = document.createElement('h1');
-    h1Temperature.innerHTML = `${temperature.temp}${showUnits(tempUnits)}`;
-    divTemperature.setAttribute('class', 'col-4 align-self-center text-center');
-    divTemperature.appendChild(h1Temperature);
-    parentElement.appendChild(divTemperature);
+
+    parentElement.appendChild(showMainTemperature());
 
     const divIconDescription = document.createElement('div');
     const iconWeather = document.createElement('img');
@@ -114,10 +136,14 @@ const domHandler = (() => {
   };
 
   const showError = (error) => {
+    const currentWeather = document.getElementById('current-weather');
     const errorElement = document.querySelector('.alert-danger');
-    if (errorElement) errorElement.remove();
     const parentElement = document.getElementById('form-weather');
     const divError = document.createElement('div');
+    
+    currentWeather.innerHTML = '';
+    if (errorElement) errorElement.remove();
+
     divError.setAttribute('class', 'my-3 alert alert-danger');
     if (error.message === '404') {
       divError.innerHTML = 'Location no found';
@@ -130,7 +156,7 @@ const domHandler = (() => {
   };
 
   return {
-    showWeather, getLocationUnitsDOM, showError,
+    showWeather, getLocation, showError, setTempUnits
   };
 })();
 export default domHandler;
