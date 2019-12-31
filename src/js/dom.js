@@ -13,11 +13,9 @@ const domHandler = (() => {
     document.getElementById('location').value = '';
   };
 
-  const setTempUnits = (units) => { tempUnits = units };
+  const setTempUnits = (units) => { tempUnits = units; };
 
-  const getLocation = () => {
-    return document.getElementById('location').value;
-  };
+  const getLocation = () =>  document.getElementById('location').value;
 
   const getCurrentNameDay = () => {
     const d = new Date();
@@ -73,7 +71,8 @@ const domHandler = (() => {
     buttonImperial.innerHTML = '°F';
     buttonMetric.setAttribute('id', 'metric');
     buttonImperial.setAttribute('id', 'imperial');
-    if (tempUnits === 'metric'){
+
+    if (tempUnits === 'metric') {
       buttonMetric.disabled = true;
       buttonImperial.disabled = false;
     } else {
@@ -81,14 +80,12 @@ const domHandler = (() => {
       buttonImperial.disabled = true;
     }
 
-
     divTemperature.setAttribute('class', 'col-4 align-self-center text-center');
     divTemperature.appendChild(h1Temperature);
     divTemperature.appendChild(buttonMetric);
     divTemperature.appendChild(buttonImperial);
 
     return divTemperature;
-
   };
 
   const showWeather = (weatherData) => {
@@ -156,7 +153,7 @@ const domHandler = (() => {
   };
 
   return {
-    showWeather, getLocation, showError, setTempUnits
+    showWeather, getLocation, showError, setTempUnits,
   };
 })();
 export default domHandler;

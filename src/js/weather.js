@@ -5,11 +5,6 @@ const weatherAPI = (() => {
   let units;
   const url = 'http://api.openweathermap.org/data/2.5/weather?q=';
   const API = 'c09b7b383de915e8d54efbee3298eb08';
-  
-  const currentWeather = document.getElementById('current-weather');
-  currentWeather.addEventListener('click', (e) => {
-    if (e.target.id === 'metric' || e.target.id === 'imperial' ) getWeatherLocation(e);
-  });
 
   const setUrl = () => `${url}${location}&units=${units}&appid=${API}`;
 
