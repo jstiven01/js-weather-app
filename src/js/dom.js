@@ -71,28 +71,28 @@ const domHandler = (() => {
     const parentElement = document.getElementById('current-weather');
     const errorElement = document.querySelector('.alert-danger');
     if (errorElement) errorElement.remove();
-    // Name city
+    
     const divCityDay = document.createElement('div');
     const h2NameCity = document.createElement('h2');
     h2NameCity.innerHTML = nameCity;
     divCityDay.appendChild(h2NameCity);
-    // Current Day
+
     const h4CurrentDay = document.createElement('h4');
     h4CurrentDay.innerHTML = getCurrentNameDay();
     divCityDay.setAttribute('class', 'col-4 align-self-center text-center');
     divCityDay.appendChild(h4CurrentDay);
     parentElement.appendChild(divCityDay);
-    // Description weather
+
     const h4Description = document.createElement('h4');
     h4Description.innerHTML = weatherDescription[0].description;
-    // Temperature
+
     const divTemperature = document.createElement('div');
     const h1Temperature = document.createElement('h1');
     h1Temperature.innerHTML = `${temperature.temp}${showUnits(tempUnits)}`;
     divTemperature.setAttribute('class', 'col-4 align-self-center text-center');
     divTemperature.appendChild(h1Temperature);
     parentElement.appendChild(divTemperature);
-    // icon weather
+
     const divIconDescription = document.createElement('div');
     const iconWeather = document.createElement('img');
     iconWeather.alt = 'icon weather';
@@ -101,7 +101,7 @@ const domHandler = (() => {
     divIconDescription.appendChild(iconWeather);
     divIconDescription.appendChild(h4Description);
     parentElement.appendChild(divIconDescription);
-    // Additional Info
+
     const divAddInfo = document.createElement('div');
     const h6Title = document.createElement('h6');
     h6Title.setAttribute('class', 'col-12');
@@ -109,7 +109,7 @@ const domHandler = (() => {
     divAddInfo.appendChild(h6Title);
     divAddInfo.appendChild(showAdditionalInfo());
     parentElement.appendChild(divAddInfo);
-    // setting background
+
     setBackgroundWeather(weatherDescription[0].id);
   };
 
