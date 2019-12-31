@@ -145,7 +145,6 @@ const domHandler = (() => {
     const errorElement = document.querySelector('.alert-danger');
     const parentElement = document.getElementById('form-weather');
     const divError = document.createElement('div');
-    
     currentWeather.innerHTML = '';
     if (errorElement) errorElement.remove();
     divError.setAttribute('class', 'my-3 alert alert-danger');
